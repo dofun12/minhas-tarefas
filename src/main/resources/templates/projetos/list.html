@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template :: head(title=${title})"></head>
+<body>
+<div th:replace="template :: header"></div>
+<div class="container">
+    <div th:each="ftx,iterStat  : ${projetos}" class="card mb-2 mt-2" th:classappend="${iterStat.odd}? 'odd' : 'even'">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${ftx.titulo}"></h5>
+            <h6 class="card-subtitle mb-2 text-muted"  th:text="${ftx.getPrazoMessage()}"></h6>
+            <div class="card-text" th:text="${ftx.descricao}"></div>
+            <a th:href="'/projetos/details/'+${ftx.getIdProjeto()}" class="card-link">Detalhes</a>
+        </div>
+    </div>
+
+</div>
+<div class="footer">
+    <a href="/projetos/new">Adicionar Projeto</a>
+</div>
+<th:block th:replace="template :: scripts"></th:block>
+</body>
+</html>

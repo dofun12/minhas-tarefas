@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template :: head(title=${title})"></head>
+<body>
+<div th:replace="template :: header"></div>
+<div class="container">
+    <form class="row g-3"  th:action="@{/projetos/new}" th:object="${projeto}" method="post">
+        <p>Titulo: <input class="form-control" type="text" th:field="*{titulo}"/></p>
+        <p>Descricao: <textarea rows="4" type="text" class="form-control" th:field="*{descricao}"></textarea></p>
+        <p>Data Prazo: <input type="datetime-local" class="form-control" th:field="*{dataPrazo}"/></p>
+        <p><input class="btn btn-primary" type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+    </form>
+</div>
+<th:block th:replace="template :: scripts"></th:block>
+</body>
+</html>

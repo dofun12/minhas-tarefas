@@ -11,6 +11,16 @@
 <div th:fragment="header">
 
 </div>
+<th:block th:fragment="breadcumb">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <!--/*@thymesVar id="breadlist" type="java.util.List<example.filexplorer.dto.BreadDto>"*/-->
+      <th:block th:each="bread  : ${breadlist}" >
+        <li class="breadcrumb-item" th:attrappend="aria-current=${bread.active}? 'page' : ''" th:classappend="${bread.active}? 'active' : ''"><a th:text="${bread.name}" th:href="${bread.link}"></a></li>
+      </th:block>
+    </ol>
+  </nav>
+</th:block>
 <th:block th:fragment="scripts">
   <script src="/js/bootstrap.bundle.min.js"></script>
 </th:block>

@@ -5,12 +5,10 @@
 <div th:replace="template :: header"></div>
 <div th:replace="template :: breadcumb"></div>
 <div class="container">
-    <form class="row g-3"   th:action="@{/projetos/details/{path}(path=${idProjeto})}" th:object="${projeto}" method="post">
-        <p th:if="${projeto.idProjeto != null}">Id: <span disabled class="form-control"  th:text="${projeto.idProjeto}"></span></p>
+    <form class="row g-3"  th:action="@{/projetos/{path}/tarefas/new(path=${idProjeto})}" th:object="${tarefa}" method="post">
         <p>Titulo: <input class="form-control" type="text" th:field="*{titulo}"/></p>
         <p>Descricao: <textarea rows="4" type="text" class="form-control" th:field="*{descricao}"></textarea></p>
         <p>Data Prazo: <input type="datetime-local" class="form-control" th:field="*{dataPrazo}"/></p>
-        <p >Data Criacao: <span disabled class="form-control disabled" th:text="${projeto.dataCriacao}"/></p>
         <p><input class="btn btn-primary" type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
     </form>
 </div>

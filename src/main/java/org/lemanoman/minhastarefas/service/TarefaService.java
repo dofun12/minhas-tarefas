@@ -1,6 +1,7 @@
 package org.lemanoman.minhastarefas.service;
 
 import org.lemanoman.minhastarefas.dto.ProjetoDto;
+import org.lemanoman.minhastarefas.dto.TarefaDto;
 import org.lemanoman.minhastarefas.model.ProjetoModel;
 import org.lemanoman.minhastarefas.model.TarefaModel;
 import org.lemanoman.minhastarefas.repository.ProjetoRepository;
@@ -18,6 +19,12 @@ public class TarefaService {
     public TarefaService(TarefaRepository tarefaRepository, ProjetoRepository projetoRepository) {
         this.tarefaRepository = tarefaRepository;
         this.projetoRepository = projetoRepository;
+    }
+    public List<TarefaDto> getListTarefasDto(Integer idProjeto){
+        return tarefaRepository.findAllByIdProjeto(idProjeto).stream().map(TarefaDto::new).toList();
+    }
+    public List<TarefaModel> getListTarefas(Integer idProjeto){
+        return tarefaRepository.findAllByIdProjeto(idProjeto);
     }
 
     public ProjetoModel getProjetoModel(Integer idProjeto){
